@@ -1,4 +1,7 @@
 @import "tailwindcss";
 @import url("@arudovwen/form-builder-react/dist/index.css");
-@import url('./index.scss');
+@import url("./index.scss");
 
+body {
+  background: #f8f9fa;
+}
