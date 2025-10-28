@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.red {
+  font-size: 40px;
+  color: red;
+}
+:root {
+  --foreground-rgb: 71, 84, 103;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --ck-border-radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  /* color: rgb(var(--foreground-rgb)); */
+  font-family: "Public Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+html {
+  padding: 0 !important;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+#app {
+  height: 100vh;
+  width: 100vw;
+}
+@layer utilities {
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .btn {
+    @apply flex active:scale-95 transition-all duration-300 justify-center items-center px-[14px] py-[11px] whitespace-nowrap bg-white  border border-[#D0D5DD]  font-normal text-[16px] sm:text-[16px] text-[#414651]  capitalize hover:opacity-90  disabled:opacity-60 rounded-lg outline-none shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)];
+  }
+  .input {
+    @apply text-[#414651] border border-[#D5D7DA] rounded-lg px-[14px] py-[9px] w-full pr-11 outline-none focus:border-gray-400 shadow-[0px_1px_2px_0px_#0A0D120D]  text-[16px] placeholder:text-[#717680];
+  }
+}
