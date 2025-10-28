@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Public Sans:wght@100..900&display=swap");
+@import url("@arudovwen/form-builder-react/dist/index.css");
 
 .red {
   font-size: 40px;
@@ -54,4 +55,55 @@ html {
   .input {
     @apply text-[#414651] border border-[#D5D7DA] rounded-lg px-3.5 py-[9px] w-full pr-11 outline-none focus:border-gray-400 shadow-[0px_1px_2px_0px_#0A0D120D]  text-[16px] placeholder:text-[#717680];
   }
+}
+
+.form_submit {
+  .container > div:first-child {
+    padding: 10px 36px 0 36px;
+  }
+
+  box-shadow: 0px 1px 2px 0px #0a0d120d;
+
+  footer {
+    padding-left: 36px;
+    padding-right: 36px;
+    margin-top: 16px !important;
+  }
+}
+.form_approval {
+  .container > div:first-child {
+    padding: 10px 36px 0 36px;
+  }
+
+  box-shadow: 0px 1px 2px 0px #0a0d120d;
+
+  footer {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 16px !important;
+  }
+}
+.application {
+  .container > div:first-child {
+    padding: 10px 0 0;
+  }
+  .section_box__title {
+    padding: 16px 36px;
+  }
+  .section_box__content {
+    padding: 0 36px;
+  }
+ 
+  footer {
+    padding-left: 36px;
+    padding-right: 36px;
+    margin-top: 16px !important;
+  }
+}
+
+.bg-primary{
+  background: #42307D
+}
+.border-primary{
+  background: #42307D
 }

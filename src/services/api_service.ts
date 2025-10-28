@@ -21,10 +21,6 @@ const API_URLS = {
 const createAxiosInstance = (baseURL: string) => {
   const instance = Axios.create({
     baseURL,
-    headers: {
-      // Authorization: `Bearer ${getToken() || ""}`,
-      "Content-Type": "application/json",
-    },
     withCredentials: false,
   });
 

@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')!).render(
     <Router>
       <Routes>
         {/* Define your route(s) here */}
-        <Route path="/" element={<App />} />
+        <Route path="/:formId" element={<App />} />
         <Route path="/application/request/:formId" element={<FormPage />} /> {/* Dynamic route */}
       </Routes>
     </Router>

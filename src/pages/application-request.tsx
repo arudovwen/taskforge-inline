@@ -1,7 +1,7 @@
 import  { useEffect, useState } from "react";
 import { FormViewer } from "@arudovwen/form-builder-react";
 
-import { addFormExternal, getForm } from "../services/formservice";
+import { addFormExternal, getForm } from "../services/formservice.js";
 import TaskforgeLogoSvg from "../assets/svgs/taskforge-logo";
 import AppButton from "../components/AppButton";
 import { useLocationUtils } from "../hooks/useLocationUtils";
@@ -97,9 +97,9 @@ export default function NewApplicationRequest() {
     <div className="px-10 py-20">
       <div className="max-w-[650px] w-full mx-auto">
         <div className="px-6 text-center rounded-lg mb-7">
-          <h1 className="text-[30px] font-semibold text-[#363F72] mb-2">
+          <span className="text-3xl font-semibold text-[#363F72] mb-2">
             {formInfo?.name}
-          </h1>
+          </span>
           <p className="font-medium text-[#363F72]">
             {formInfo?.description}
           </p>
@@ -107,7 +107,7 @@ export default function NewApplicationRequest() {
 
         {!stage ? (
           <div className="border border-[#D5D9EB] rounded-lg pb-4 bg-white">
-            <div className="min-h-[200px]">
+            <div className="min-h-[200px] application">
               <FormViewer
                 loading={formLoading}
                 form_data={formData}
@@ -119,7 +119,7 @@ export default function NewApplicationRequest() {
                   <div className="flex justify-end gap-x-3">
                     <AppButton
                       text="Submit"
-                      btnClass="w-full border border-primary text-base !py-[10px] !bg-primary !text-white"
+                      btnClass="w-full border border-primary-500 text-base py-[10px] bg-primary text-white"
                       type="submit"
                       isDisabled={submitLoading}
                       isLoading={submitLoading}
