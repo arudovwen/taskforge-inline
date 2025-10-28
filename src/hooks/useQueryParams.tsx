@@ -1,21 +1,26 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useCallback, useSyncExternalStore } from "react";
 
 export const useQueryParam = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const subscribe = useCallback((callback: () => void) => {
+    window.addEventListener("popstate", callback);
+    return () => window.removeEventListener("popstate", callback);
+  }, []);
 
-  // Get query parameter
-  const getQueryParam = (paramName: string) => {
-    const params = new URLSearchParams(location.search);
-    return params.get(paramName);
-  };
+  const getSnapshot = useCallback(() => window.location.search, []);
+  const queryString = useSyncExternalStore(subscribe, getSnapshot);
+  const params = new URLSearchParams(queryString);
 
-  // Set query parameter
-  const setQueryParam = (paramName: string, value: string) => {
-    const params = new URLSearchParams(location.search);
-    params.set(paramName, value);
-    navigate(`${location.pathname}?${params.toString()}`, { replace: true });
-  };
+  const getQueryParam = useCallback(
+    (name: string): string | null => params.get(name),
+    [params]
+  );
+
+  const setQueryParam = useCallback((name: string, value: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set(name, value);
+    window.history.replaceState({}, "", url.toString());
+    window.dispatchEvent(new Event("popstate"));
+  }, []);
 
   return { getQueryParam, setQueryParam };
 };

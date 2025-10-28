@@ -28,38 +28,6 @@ const createAxiosInstance = (baseURL: string) => {
     withCredentials: false,
   });
 
-  // ✅ Block requests if auth error previously occurred
-  // instance.interceptors.request.use((config) => {
-  //   if (isAuthError) {
-  //     return Promise.reject(new Axios.Cancel("Blocked due to auth error"));
-  //   }
-  //   return config;
-  // });
-
-  // Handle auth errors globally
-  instance.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const status = error?.response?.status;
-
-      if (status === 401) {
-        window.location.replace("/");
-        return Promise.reject(error);
-      }
-      if (status === 403) {
-        console.warn("Authorization error. Blocking further requests.");
-        isAuthError = true;
-
-        // Clear session & redirect
-        localStorage.clear()
-        window.location.replace("/");
-
-        return Promise.reject(error);
-      }
-
-      return Promise.reject(error);
-    }
-  );
 
   return instance;
 };
@@ -93,22 +61,22 @@ const getAxiosInstance = (api: string) => {
 };
 
 // ✅ Shared request methods
-export const get = async (url, config = {}, api = "WORKFLOW") => {
+export const get = async (url: string, config = {}, api = "WORKFLOW") => {
   const instance = getAxiosInstance(api);
   return instance.get(url, config);
 };
 
-export const post = async (url, data, config = {}, api = "WORKFLOW") => {
+export const post = async (url : string, data: any, config = {}, api = "WORKFLOW") => {
   const instance = getAxiosInstance(api);
   return instance.post(url, data, config);
 };
 
-export const put = async (url, data, config = {}, api = "WORKFLOW") => {
+export const put = async (url : string, data : any, config = {}, api = "WORKFLOW") => {
   const instance = getAxiosInstance(api);
   return instance.put(url, data, config);
 };
 
-export const del = async (url, config = {}, api = "WORKFLOW") => {
+export const del = async (url: string, config = {}, api = "WORKFLOW") => {
   const instance = getAxiosInstance(api);
   return instance.delete(url, config);
 };

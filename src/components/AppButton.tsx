@@ -69,11 +69,11 @@ const Button: React.FC<ButtonProps> = ({
     return (
       <span className="flex items-center">
       
-        {svgIcon && iconPosition === "left" && <span className="mr-[6px]">{svgIcon}</span>}
+        {svgIcon && iconPosition === "left" && <span className="mr-1.5">{svgIcon}</span>}
         {text && <span>{text}</span>}
     
 
-        {svgIcon && iconPosition === "right" && <span className="ml-[6px]">{svgIcon}</span>}
+        {svgIcon && iconPosition === "right" && <span className="ml-1.5">{svgIcon}</span>}
       </span>
     );
   };

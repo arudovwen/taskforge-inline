@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { FormViewer } from "@arudovwen/form-builder-react";
 
 import { addFormExternal, getForm } from "../services/formservice";
 import TaskforgeLogoSvg from "../assets/svgs/taskforge-logo";
 import AppButton from "../components/AppButton";
+import { useLocationUtils } from "../hooks/useLocationUtils";
 import { errorResponse } from "../utils/errorResponse";
 import ApplicationSuccess from "./application-success";
 import { ExcludedFormTypes, config } from "../utils/constants";
 import { stringValue } from "../utils/stringValue";
 import { useQueryParam } from "../hooks/useQueryParams";
-import { useParams } from "react-router-dom";
-import axios from "axios";
 
 interface FormInfo {
   name?: string;
@@ -20,14 +19,14 @@ interface FormInfo {
 }
 
 export default function NewApplicationRequest() {
-  const params = useParams();
-  const { getQueryParam } = useQueryParam();
+  const { params } = useLocationUtils();
+  const { getQueryParam, setQueryParam } = useQueryParam();
+
   const action = params.action;
   const formId = params.formId;
 
   const workflowId = getQueryParam("workflowId");
   const stage = getQueryParam("stage");
-
   const name = getQueryParam("name");
   const activityInstanceId = getQueryParam("activityInstanceId");
 
@@ -39,16 +38,6 @@ export default function NewApplicationRequest() {
   async function getFormData() {
     if (!formId) return;
     try {
-      axios.post(
-        "https://dev.gateway.matta.trade/market/v1/marketplace/get-products-bytags",
-        {
-          PageNumber: 1,
-          PageSize: 8,
-          tag: "hotdeals",
-          withZoho: true,
-        }
-      );
-      axios.get('https://api.dev.gateway.tva.thetaskforge.co/forms/v1/forms/get?formId=140983df-970e-42d4-bbf1-7eca7c7f09c7')
       setFormLoading(true);
       const { data, status } = await getForm({ formId });
       if (status === 200) {
@@ -111,7 +100,9 @@ export default function NewApplicationRequest() {
           <h1 className="text-[30px] font-semibold text-[#363F72] mb-2">
             {formInfo?.name}
           </h1>
-          <p className="font-medium text-[#363F72]">{formInfo?.description}</p>
+          <p className="font-medium text-[#363F72]">
+            {formInfo?.description}
+          </p>
         </div>
 
         {!stage ? (
