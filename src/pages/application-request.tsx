@@ -109,7 +109,6 @@ export default function NewApplicationRequest() {
             </div> </div>
         }
 
-
         {!stage ? (
           <div className="border border-[#D5D9EB] rounded-lg pb-4 bg-white">
             <div className="min-h-[200px] application">
