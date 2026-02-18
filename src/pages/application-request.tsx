@@ -97,15 +97,18 @@ export default function NewApplicationRequest() {
 
   return (
     <div className={is_embed ? "" : "px-10 py-20"}>
-      <div className="max-w-[650px] w-full mx-auto">
-        <div className="px-6 text-center rounded-lg mb-7">
-          {!hide_title && <div className="px-6 text-center rounded-lg mb-7">
-            <h1 className="form_title font-semibold text-[#363F72] mb-2 capitalize">
-              {formInfo?.name}
-            </h1>
-            <p className="form_desc font-medium text-[#363F72]">{formInfo?.description}</p>
-          </div>}
-        </div>
+      <div className={is_embed ? "" : "max-w-[650px] w-full mx-auto"}>
+
+        {!hide_title &&
+          <div className="px-6 text-center rounded-lg mb-7">
+            <div className="px-6 text-center rounded-lg mb-7">
+              <h1 className="form_title font-semibold text-[#363F72] mb-2 capitalize">
+                {formInfo?.name}
+              </h1>
+              <p className="form_desc font-medium text-[#363F72]">{formInfo?.description}</p>
+            </div> </div>
+        }
+
 
         {!stage ? (
           <div className="border border-[#D5D9EB] rounded-lg pb-4 bg-white">
