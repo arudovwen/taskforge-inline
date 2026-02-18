@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
+import './index.scss';
 import App from './App.tsx'; // Your main App component
 import FormPage from './pages/application-request.tsx';
 

@@ -1,4 +1,4 @@
-export default function TaskforgeLogoSvg() {
+export default function TaskforgeLogoSvg({className}: {className?: string}) {
   return (
     <div>
       <svg
@@ -7,6 +7,7 @@ export default function TaskforgeLogoSvg() {
         viewBox="0 0 66 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className={className}
       >
         <g clipPath="url(#clip0_3586_91310)">
           <path

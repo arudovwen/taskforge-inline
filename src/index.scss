@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Public Sans:wght@100..900&display=swap");
-@import url("@arudovwen/form-builder-react/dist/index.css");
 
-.red {
-  font-size: 40px;
-  color: red;
-}
 :root {
   --foreground-rgb: 71, 84, 103;
   --background-start-rgb: 214, 219, 220;
@@ -49,12 +44,7 @@ html {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-  .btn {
-    @apply flex active:scale-95 transition-all duration-300 justify-center items-center px-3.5 py-[11px] whitespace-nowrap bg-white  border border-[#D0D5DD]  font-normal text-[16px] sm:text-[16px] text-[#414651]  capitalize hover:opacity-90  disabled:opacity-60 rounded-lg outline-none shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)];
-  }
-  .input {
-    @apply text-[#414651] border border-[#D5D7DA] rounded-lg px-3.5 py-[9px] w-full pr-11 outline-none focus:border-gray-400 shadow-[0px_1px_2px_0px_#0A0D120D]  text-[16px] placeholder:text-[#717680];
-  }
+
 }
 
 .form_submit {
@@ -112,4 +102,15 @@ html {
 }
 .font_desc{
   font-size: 14px;
+}
+
+.logo{
+  width: 100px;
+  height: auto;
+}
+.auth-bg {
+  background-image: url("/auth-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #191c36;
 }
