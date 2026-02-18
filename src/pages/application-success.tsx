@@ -1,9 +1,17 @@
 
 import AppButton from "../components/AppButton";
+import { useQueryParam } from "../hooks/useQueryParams";
 import FormSuccessSvg from "./form-success";
 
-export default function ApplicationSuccess() {
+export default function ApplicationSuccess({ is_embed }: { is_embed: boolean }) {
+  const { deleteQueryParam } = useQueryParam();
+
   function closeWindow() {
+    // ✅ If embedded → remove `stage` query param instead of reload
+    if (is_embed) {
+      deleteQueryParam('stage')
+      return;
+    }
     window.close();
   }
   return (

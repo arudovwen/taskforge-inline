@@ -17,10 +17,24 @@ export const useQueryParam = () => {
 
   const setQueryParam = useCallback((name: string, value: string) => {
     const url = new URL(window.location.href);
-    url.searchParams.set(name, value);
+
+    if (!value) {
+      url.searchParams.delete(name); // auto-delete if empty
+    } else {
+      url.searchParams.set(name, value);
+    }
+
     window.history.replaceState({}, "", url.toString());
     window.dispatchEvent(new Event("popstate"));
   }, []);
 
-  return { getQueryParam, setQueryParam };
+  const deleteQueryParam = useCallback((name: string) => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete(name);
+
+    window.history.replaceState({}, "", url.toString());
+    window.dispatchEvent(new Event("popstate"));
+  }, []);
+
+  return { getQueryParam, setQueryParam, deleteQueryParam };
 };

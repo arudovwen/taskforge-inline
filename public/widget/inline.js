@@ -1,1 +1,45 @@
-(()=>{let e=document.currentScript,t=e.getAttribute("data-request-id"),i=e.getAttribute("data-target-id"),r=e.getAttribute("data-width")||"100%",l=e.getAttribute("data-height")||"100%";if(!t){console.error("❌ Missing 'data-request-id' in embed script tag.");return}let a;if(i){if(!(a=document.getElementById(i))){console.error(`❌ Element with id '${i}' not found.`);return}}else(a=document.createElement("div")).style.width=r,a.style.height=l,e.parentNode.insertBefore(a,e.nextSibling);let d=document.createElement("iframe");d.src=`https://taskforge-inline.vercel.app/application/request/${t}`,d.style.width=r,d.style.height=l,d.style.border="none",d.style.display="block",d.style.borderRadius="8px",d.style.transition="height 0.3s ease",d.allow="clipboard-write; fullscreen",d.id=`embedded-form-frame-${t}`;let s=document.createElement("div");s.innerText="Loading form...",s.style.textAlign="center",s.style.padding="1rem",s.style.fontFamily="sans-serif",s.style.color="#666",a.appendChild(s),a.appendChild(d),d.addEventListener("load",()=>s.remove()),window.addEventListener("message",e=>{let{type:t,height:i}=e.data||{};"resize"===t&&i&&(d.style.height=`${i}px`),"close-iframe"===t&&d.remove()})})();
+(() => {
+  let e = document.currentScript,
+    t = e.getAttribute("data-request-id"),
+    i = e.getAttribute("data-target-id"),
+    r = e.getAttribute("data-width") || "100%",
+    l = e.getAttribute("data-height") || "100%";
+  if (!t) {
+    console.error("❌ Missing 'data-request-id' in embed script tag.");
+    return;
+  }
+  let a;
+  if (i) {
+    if (!(a = document.getElementById(i))) {
+      console.error(`❌ Element with id '${i}' not found.`);
+      return;
+    }
+  } else
+    (((a = document.createElement("div")).style.width = r),
+      (a.style.height = l),
+      e.parentNode.insertBefore(a, e.nextSibling));
+  let d = document.createElement("iframe");
+  ((d.src = `https://taskforge-inline.vercel.app/application/request/${t}?is_embed=true`),
+    (d.style.width = r),
+    (d.style.height = l),
+    (d.style.border = "none"),
+    (d.style.display = "block"),
+    (d.style.borderRadius = "8px"),
+    (d.style.transition = "height 0.3s ease"),
+    (d.allow = "clipboard-write; fullscreen"),
+    (d.id = `embedded-form-frame-${t}`));
+  let s = document.createElement("div");
+  ((s.innerText = "Loading form..."),
+    (s.style.textAlign = "center"),
+    (s.style.padding = "1rem"),
+    (s.style.fontFamily = "sans-serif"),
+    (s.style.color = "#666"),
+    a.appendChild(s),
+    a.appendChild(d),
+    d.addEventListener("load", () => s.remove()),
+    window.addEventListener("message", (e) => {
+      let { type: t, height: i } = e.data || {};
+      ("resize" === t && i && (d.style.height = `${i}px`),
+        "close-iframe" === t && d.remove());
+    }));
+})();

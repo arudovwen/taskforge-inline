@@ -85,7 +85,7 @@ html {
 }
 .application {
   .container > div:first-child {
-    padding: 10px 0 0;
+    padding: 24px 0 0;
   }
   .section_box__title {
     padding: 16px 36px;
@@ -106,4 +106,10 @@ html {
 }
 .border-primary{
   background: #42307D
+}
+.form_title{
+  font-size: 30px;
+}
+.font_desc{
+  font-size: 14px;
 }

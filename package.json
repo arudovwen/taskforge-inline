@@ -1,8 +1,8 @@
 {
-  "name": "taskforge-inline",
+  "name": "taskforge-forms",
   "version": "0.0.1",
   "private": true,
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "description": "Forms by taskforge",
   "license": "ISC",
   "author": "",
   "type": "module",

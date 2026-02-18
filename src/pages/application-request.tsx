@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FormViewer } from "@arudovwen/form-builder-react";
 
 import { addFormExternal, getForm } from "../services/formservice.js";
@@ -29,6 +29,8 @@ export default function NewApplicationRequest() {
   const stage = getQueryParam("stage");
   const name = getQueryParam("name");
   const activityInstanceId = getQueryParam("activityInstanceId");
+  const hide_title = getQueryParam("hide_title");
+  const is_embed: any = getQueryParam("is_embed");
 
   const [formLoading, setFormLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -94,15 +96,15 @@ export default function NewApplicationRequest() {
   };
 
   return (
-    <div className="px-10 py-20">
+    <div className={is_embed ? "" : "px-10 py-20"}>
       <div className="max-w-[650px] w-full mx-auto">
         <div className="px-6 text-center rounded-lg mb-7">
-          <span className="text-3xl font-semibold text-[#363F72] mb-2">
-            {formInfo?.name}
-          </span>
-          <p className="font-medium text-[#363F72]">
-            {formInfo?.description}
-          </p>
+          {!hide_title && <div className="px-6 text-center rounded-lg mb-7">
+            <h1 className="form_title font-semibold text-[#363F72] mb-2 capitalize">
+              {formInfo?.name}
+            </h1>
+            <p className="form_desc font-medium text-[#363F72]">{formInfo?.description}</p>
+          </div>}
         </div>
 
         {!stage ? (
@@ -130,7 +132,7 @@ export default function NewApplicationRequest() {
             </div>
           </div>
         ) : (
-          <ApplicationSuccess />
+          <ApplicationSuccess is_embed={is_embed} />
         )}
 
         <div className="mt-[55px] flex justify-center text-[#535862] font-medium">
