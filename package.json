@@ -14,7 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@arudovwen/form-builder-react": "^1.4.3",
+    "@arudovwen/form-builder-react": "^1.5.9",
     "axios": "^1.13.0",
     "clsx": "^2.1.1",
     "react": "^18.3.1",

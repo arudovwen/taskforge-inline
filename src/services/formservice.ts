@@ -25,7 +25,7 @@ export const getForm = (data: any) => {
 
 export const addFormExternal = (data: any) => {
   return post(
-    `/forms/external/add-form-data?formId=${data?.formId}`,
+    `/forms/external/add-data?formId=${data?.formId}`,
     data,
     {},
     "FORM"

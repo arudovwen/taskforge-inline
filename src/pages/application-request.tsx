@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FormViewer } from "@arudovwen/form-builder-react";
+import { config as appConfig } from "../utils/config.js";
 
 import { addFormExternal, getForm } from "../services/formservice.js";
 import TaskforgeLogoSvg from "../assets/svgs/taskforge-logo";
@@ -44,10 +45,11 @@ export default function NewApplicationRequest() {
       const { data, status } = await getForm({ formId });
       if (status === 200) {
         setFormInfo(data.data);
+        localStorage.setItem("organizationId", data.data?.organizatonId);
         setFormData(
           data.data?.builderMetaInfo
             ? JSON.parse(data.data?.builderMetaInfo)
-            : {}
+            : {},
         );
       }
     } catch (error: any) {
@@ -64,7 +66,7 @@ export default function NewApplicationRequest() {
   async function submitFormData(values: any[]) {
     try {
       const filteredValues = values.filter(
-        (i) => !ExcludedFormTypes.includes(i.type)
+        (i) => !ExcludedFormTypes.includes(i.type),
       );
       setSubmitLoading(true);
 
@@ -98,16 +100,18 @@ export default function NewApplicationRequest() {
   return (
     <div className={is_embed ? "" : "px-10 py-20"}>
       <div className={is_embed ? "" : "max-w-[650px] w-full mx-auto"}>
-
-        {!hide_title &&
+        {!hide_title && (
           <div className="px-6 text-center rounded-lg mb-7">
             <div className="px-6 text-center rounded-lg mb-7">
               <h1 className="form_title font-semibold text-[#363F72] mb-2 capitalize">
                 {formInfo?.name}
               </h1>
-              <p className="form_desc font-medium text-[#363F72]">{formInfo?.description}</p>
-            </div> </div>
-        }
+              <p className="form_desc font-medium text-[#363F72]">
+                {formInfo?.description}
+              </p>
+            </div>{" "}
+          </div>
+        )}
 
         {!stage ? (
           <div className="border border-[#D5D9EB] rounded-lg pb-4 bg-white">
@@ -118,6 +122,7 @@ export default function NewApplicationRequest() {
                 onSubmit={SubmitOptions[action ?? "submit"]}
                 config={config}
                 renderType="single"
+                 uploadUrl={`${appConfig.API_BASE_URL}/edms/v1/fileupload/upload-document`}
               >
                 <div className="w-full">
                   <div className="flex justify-end gap-x-3">

@@ -15,6 +15,9 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "paths": {
+      "@arudovwen/form-builder-react": ["./node_modules/@arudovwen/form-builder-react/types/index.d.ts"]
+    },
 
     /* Linting */
     "strict": true,
